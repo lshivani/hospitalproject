@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Stock</title>
+</head>
+<style>
+    body{
+    
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    }
+    label{
+        color: aliceblue;
+    }
+    h1{
+        color: aqua;
+        border-style: ridge;
+        text-align: center;
+    }
+    .form-center{
+        display: flex;
+        justify-content: center;
+
+    }
+
+</style>
+{% include 'navbar3.html' %} 
+<body background="{% static '/hospitalapp/images/bg10.jpg' %}">
+  <h1>Medical Inventory</h1>
+  <div class ="form-center">
+    <center><form method="POST">
+      {% csrf_token %}
+
+      <label>Medicine:</label>
+      <select name="medicine" id="medicine">
+          <option value="" selected>Select Product</option>
+          <option value="Paracetomol" >Paracetomol</option>
+          <option value="Bandages" >Bandages</option>
+          <option value="Thermometer" >Thermometer</option>
+          <option value="Dolo650" >Dolo650</option>
+          <option value="Crosin" >Crosin</option>
+          <option value="ColdAct" >ColdAct</option>
+          <option value="Tus-Q" >Tus-Q</option>
+          <option value="ZinCold" >ZinCold</option>
+          <option value="Saridon" >Saridon</option>
+          <option value="Zerodol-P" >Zerodol-P</option>
+          <option value="Cetirizine" >Cetirizine</option>
+          <option value="Dart" >Dart</option>
+      </select><br><br>
+          
+      <label>Quantity:</label>
+ <input type="text" id="inputQuantity" oninput="myFunction()" size="10" name="quantity" style="height:20px;margin-left:5px;"><br>
+
+ <label >Price:</label>
+<input type="text" id="inputPrice" oninput="myFunction()" size="10" name="price" style="height:20px;margin-left:30px;"><br>
+
+<h3 style="color:white;margin-left:68px;">price: <span id="price">0</span></h3><br>
+ <center><div><input type="submit" value="Submit"></div><center>
+</form>
+{% include 'alerts.html' %}  <!--including alerts.html file in this file-->
+</center>
+ </div>
+
+      <script>
+        function myFunction() {
+        var price = document.getElementById("inputQuantity").value;
+         var total = price * 5;
+         document.getElementById("price").innerHTML = total;
+        text="myFunction()"
+         }
+         </script>
+</body>
+</html>
